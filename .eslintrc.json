@@ -24,6 +24,7 @@
 		"camelcase": "error",
 		"quotes": ["error", "single"],
 		"no-duplicate-imports": "error",
+		"@typescript-eslint/no-non-null-assertion": "off",
 		"prettier/prettier": ["error"]
 	},
 	"settings": {

@@ -14,6 +14,8 @@ root.render(
 				domain={process.env.REACT_APP_AUTH0_DOMAIN || ''}
 				clientId={process.env.REACT_APP_AUTH0_CLIENT_ID || ''}
 				redirectUri='http://localhost:3000/login'
+				useRefreshTokens
+				cacheLocation='localstorage'
 			>
 				<App />
 			</Auth0Provider>
