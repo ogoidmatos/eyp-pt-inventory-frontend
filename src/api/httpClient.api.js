@@ -7,12 +7,12 @@ const httpClient = axios.create({
 	},
 });
 
-export const getAuthToken = () => localStorage.getItem('token');
+let accessToken;
+
+export const setAuthToken = (token) => (accessToken = token);
 
 const authInterceptor = (config) => {
-	const token = getAuthToken();
-
-	if (token) config.headers['Authorization'] = `Bearer ${getAuthToken()}`;
+	if (accessToken) config.headers['Authorization'] = `Bearer ${accessToken}`;
 
 	return config;
 };
@@ -39,7 +39,7 @@ const errorInterceptor = (error) => {
 		case 401: // authentication error, logout the user
 			// Will need update when login is finalized
 
-			localStorage.removeItem('token');
+			//localStorage.removeItem('token');
 			window.location.replace(window.location.origin);
 			break;
 
