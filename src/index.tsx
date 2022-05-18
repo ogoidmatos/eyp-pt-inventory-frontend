@@ -5,6 +5,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from '@auth0/auth0-react';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import { customTheme } from './themeConfig';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -18,7 +20,10 @@ root.render(
 				useRefreshTokens
 				cacheLocation='localstorage'
 			>
-				<App />
+				<ThemeProvider theme={customTheme}>
+					<CssBaseline />
+					<App />
+				</ThemeProvider>
 			</Auth0Provider>
 		</BrowserRouter>
 	</React.StrictMode>
