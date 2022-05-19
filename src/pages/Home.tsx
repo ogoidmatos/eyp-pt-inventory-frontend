@@ -1,20 +1,32 @@
-import logo from '../logo.svg';
 import { useAuth0 } from '@auth0/auth0-react';
+import { Paper, Button, Typography } from '@mui/material';
+import eypPtLogoWide from '../assets/eyp-pt-logo-wide.png';
 
 export const Home = () => {
 	const { loginWithRedirect } = useAuth0();
 	return (
-		<div className='App'>
-			<header className='App-header'>
-				<img src={logo} className='App-logo' alt='logo' />
-				<p>
-					Edit <code>src/App.tsx</code> and save to reload.
-				</p>
-				<a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-					Learn React
-				</a>
-				<button onClick={() => loginWithRedirect()}>Log In</button>
-			</header>
+		<div className='home-container'>
+			<Paper className='home-paper' elevation={3}>
+				<div>
+					<img src={eypPtLogoWide} alt='eyp-pt-logo-wide' className='home-logo' />
+				</div>
+				<Typography variant='h4' className='home-header'>
+					Welcome to EYP PT&apos;s Inventory Database!
+				</Typography>
+				<div className='home-buttons-div'>
+					<Button variant='contained' onClick={() => loginWithRedirect()} className='home-button'>
+						Log In
+					</Button>
+					<Button
+						variant='contained'
+						// eslint-disable-next-line camelcase
+						onClick={() => loginWithRedirect({ screen_hint: 'signup' })}
+						className='home-button'
+					>
+						Sign Up
+					</Button>
+				</div>
+			</Paper>
 		</div>
 	);
 };

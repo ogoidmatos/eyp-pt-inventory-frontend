@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from '@auth0/auth0-react';
-import { ThemeProvider, CssBaseline } from '@mui/material';
+import { ThemeProvider, CssBaseline, StyledEngineProvider } from '@mui/material';
 import { customTheme } from './themeConfig';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
@@ -20,10 +20,12 @@ root.render(
 				useRefreshTokens
 				cacheLocation='localstorage'
 			>
-				<ThemeProvider theme={customTheme}>
-					<CssBaseline />
-					<App />
-				</ThemeProvider>
+				<StyledEngineProvider injectFirst>
+					<ThemeProvider theme={customTheme}>
+						<CssBaseline />
+						<App />
+					</ThemeProvider>
+				</StyledEngineProvider>
 			</Auth0Provider>
 		</BrowserRouter>
 	</React.StrictMode>
