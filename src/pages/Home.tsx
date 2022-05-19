@@ -5,7 +5,7 @@ import eypPtLogoWide from '../assets/eyp-pt-logo-wide.png';
 export const Home = () => {
 	const { loginWithRedirect } = useAuth0();
 	return (
-		<div className='home-container'>
+		<div className='center-container'>
 			<Paper className='home-paper' elevation={3}>
 				<div>
 					<img src={eypPtLogoWide} alt='eyp-pt-logo-wide' className='home-logo' />

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { createUser } from '../api/auth.api';
 import { User } from '../types/User';
-import { TextField } from '@mui/material';
+import { TextField, Paper, Typography } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 
 interface LoginProps {
@@ -32,20 +32,33 @@ export const Login = (props: LoginProps) => {
 		setUserData(data);
 	};
 	return (
-		<>
-			<TextField
-				autoComplete='off'
-				name='name'
-				label='Name'
-				variant='outlined'
-				required
-				onChange={handleNameChange}
-				error={error}
-				helperText={!error ? '' : 'Name must have between 1 and 255 characters!'}
-			/>
-			<LoadingButton loading={loading} onClick={handleSubmit}>
-				Create User
-			</LoadingButton>
-		</>
+		<div className='center-container'>
+			<Paper className='login-paper'>
+				<Typography variant='h5'>Please insert your name!</Typography>
+				<div>
+					<TextField
+						autoComplete='off'
+						name='name'
+						label='Name'
+						variant='outlined'
+						required
+						onChange={handleNameChange}
+						error={error}
+						helperText={!error ? '' : 'Name must have between 1 and 255 characters!'}
+						className='login-name'
+					/>
+				</div>
+				<div>
+					<LoadingButton
+						variant='contained'
+						loading={loading}
+						onClick={handleSubmit}
+						className='login-button'
+					>
+						Create User
+					</LoadingButton>
+				</div>
+			</Paper>
+		</div>
 	);
 };
